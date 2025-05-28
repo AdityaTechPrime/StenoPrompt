@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Contact form for Steno Practice feedback and inquiries."/>
+    <link rel="icon" href="images/logo.svg" type="image/x-icon"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Steno Practice - Contact</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img class="header_logo-img" src="images/logo.svg" alt="Logo of Steno Practice"/>
+            <a href="index.html" class="header_title ">[Steno:-]<span class="header_title_Span">$__prompt </span></a>
+        </div>
+        <div class="header-center">
+            <h3 class="header-h3-msg">Contact Us</h3>
+        </div>
+        <div class="my-email">
+            <a class="feedback" href="contact.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M0 4a2 2 0 012-2h12a2 2 0 012 2v.217l-8 4.8-8-4.8V4zm0 1.383v6.634l5.803-3.48L0 5.383zM6.761 8.83l-6.761 4.06A2 2 0 002 14h12a2 2 0 001.999-1.11l-6.76-4.06L8 9.583 6.761 8.83zM10.197 8.537L16 12.017V5.383l-5.803 3.154z"/>
+                </svg>
+                Contact
+            </a>
+        </div>
+    </header>
+
+    <main class="container contact-container">
+        <form action="https://formspree.io/f/xjkwnegq" method="POST" class="contact-form">
+            <h2>Send us a message!</h2>          
+
+            <label for="email">
+                Your email:
+                <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+            </label>
+
+            <label for="subject">
+                Subject (optional):
+                <input type="text" id="subject" name="subject" placeholder="Feedback about Steno Practice">
+            </label>
+
+            <label for="message">
+                Your message:
+                <textarea id="message" name="message" rows="8" required placeholder="Type your message here..."></textarea>
+            </label>
+
+            <input type="hidden" name="_redirect" value="https://yourdomain.com/index.html">
+            <button type="submit" class="promptBtn">Send</button>
+        </form>
+    </main>
+</body>
+</html>

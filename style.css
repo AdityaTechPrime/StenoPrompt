@@ -1,0 +1,639 @@
+/* Global Reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-size-base: 1.6rem;
+    --header-height: 5rem;
+    --max-width: 144rem;
+    --editor-header-height: 8rem;
+}
+
+html {
+    font-size: 62.5%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    background-color: #fafafa;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: #444;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    white-space: pre-wrap;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.4rem;
+    height: var(--header-height);
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    gap: 1rem;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header_logo-img {
+    max-width: 30px;
+    width: 100%;
+    cursor: pointer;
+    color: red;
+}
+
+.header_title {
+    font-size: 2rem;
+    color: #1a73e8;
+    cursor: pointer;
+}
+
+.header_title_Span {
+    font-size: 1.5rem;
+    color: #5f6368;
+}
+
+.header-center {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.header-h3-msg {
+    font-size: 1.6rem;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+.feedback {
+    color: #1a73e8;
+}
+
+/* Main Container */
+.container {
+    max-width: var(--max-width);
+    width: 100%;
+    padding: 1rem 2.4rem;
+    margin-top: var(--header-height);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-family: "PT Serif", serif;
+}
+
+/* Buttons */
+.promptBtn {
+    width: 7rem;
+    height: 3rem;
+    background-color: white;
+    border: 1px solid #c6c9ca;
+    color: #1a73e8;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4rem;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.promptBtn:hover {
+    background-color: #f1f3f4;
+    border-color: #1a73e8;
+}
+
+.iconBtn .icon {
+    width: 24px;
+    height: 24px;
+    color: #1a73e8;
+    transition: transform 0.2s ease;
+}
+
+.promptBtn:hover .icon {
+    transform: scale(1.1);
+}
+
+.promptBtn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.wordCountDiv {
+    width: 11rem;
+}
+
+/* Editor Header */
+.editor-header {
+    width: 100%;
+    height: var(--editor-header-height);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    transition: all 0.6s ease;
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    z-index: 1;
+    border-radius: 2rem;
+    box-shadow: 0 -20px 10px -20px rgba(0, 0, 0, 0.45) inset;
+}
+
+.editor-header.hidden {
+    opacity: 0;
+    transform: scale(0.7);
+    pointer-events: none;
+    visibility: hidden;
+    padding: 1rem 0;
+    z-index: -1;
+}
+
+/* Header for input view */
+#header1 {
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    height: auto; /* Adjust height dynamically when items wrap */
+    padding: 1rem; /* Adjust padding for wrapped content */
+    justify-content: center; /* Center items when wrapped */
+    align-items: center; /* Center items vertically */
+}
+
+#header1 > * {
+    margin: 0.5rem;
+}
+
+.clock {
+    color: #50102e;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.clock-total {
+    color: #3395ff;
+}
+
+.clockC {
+    color: pink;
+}
+
+.header-speedDiv {
+    display: flex;
+    flex-direction: column; /* Keep its internal elements (h3, range-container) stacked */
+    gap: 1rem;
+    flex-grow: 1;
+    flex-basis: auto;
+    min-width: 0;
+    align-items: center;
+}
+
+.header-speedDiv h3 {
+    text-align: center;
+}
+
+.header2-btn-group {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.textAreaStyle {
+    width: 100%;
+    height: 80vh;
+    overflow-y: auto;
+    padding: 2rem;
+    font-size: 2rem;
+    background-color: white;
+    color: #444;
+    font-family: "PT Serif", serif;
+    line-height: 3rem;
+    white-space: pre-wrap;
+    text-align: justify;
+    resize: none;
+    outline: none;
+    position: absolute;
+    top: calc(var(--header-height) + var(--editor-header-height));
+    left: 0;
+    right: 0;
+    z-index: 1;
+    border: none;
+}
+
+.textAreaStyle.hidden {
+    opacity: 0;
+    transform: scale(0.7);
+    pointer-events: none;
+    visibility: hidden;
+    z-index: -1;
+}
+
+.textAreaStyle::placeholder {
+    color: #999;
+    font-style: italic;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.header-h3-msg {
+    color: red;
+    display: none;
+    transition: opacity 0.3s ease;
+}
+
+.header-h3-msg.flash {
+    display: block;
+    animation: flash 1s ease-in-out 4;
+}
+
+@keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+#area2 .highlighted-word {
+    background-color: RGB(247, 202, 201);
+}
+
+/* Range Input */
+.range-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: nowrap; /* CRITICAL: Prevent wrapping within the container */
+    font-family: 'Roboto', sans-serif;
+    width: 100%; /* Take full width of parent */
+    max-width: 350px;
+    justify-content: center;
+}
+
+/* New class for smaller range container (applied by JS) */
+.range-container-small {
+    /* REMOVED flex-direction: column; */
+    width: 50%; /* Halve its total size as requested */
+    /* You might need to adjust max-width or flex-basis if this doesn't shrink enough */
+    max-width: 175px; /* Half of default max-width: 350px */
+    min-width: 150px; /* Prevent it from becoming too small */
+}
+
+input[type="range"] {
+    width: 250px; /* Default width for the slider */
+    flex-grow: 1; /* Allow slider to grow/shrink */
+    min-width: 80px; /* Minimum width for slider */
+    height: 10px;
+    background: transparent;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 5px;
+}
+
+/* Override for the small range container, target the range input within it */
+/* This rule is NO LONGER NEEDED as range-container-small itself controls the total width */
+/* .range-container-small input[type="range"] {
+    width: 125px;
+} */
+
+
+/* WebKit browsers */
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 10px;
+    background-color: #1a73e8;
+    border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #fff;
+    border: 2px solid #1a73e8;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-top: -10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-track {
+    height: 10px;
+    background-color: #1a73e8;
+    border-radius: 5px;
+}
+
+input[type="range"]::-moz-range-thumb {
+    background: #fff;
+    border: 2px solid #1a73e8;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Microsoft Edge (Legacy) */
+input[type="range"]::-ms-track {
+    height: 10px;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type="range"]::-ms-fill-lower,
+input[type="range"]::-ms-fill-upper {
+    background-color: #1a73e8;
+    border-radius: 5px;
+}
+
+input[type="range"]::-ms-thumb {
+    background: #fff;
+    border: 2px solid #1a73e8;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    transform: scale(1.1);
+}
+
+.range-label {
+    background: #fff;
+    border-radius: 4px;
+    padding: 5px 10px;
+    width: 5rem;
+    font-size: 1.6rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.range-label:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 5px rgba(26, 115, 232, 0.5);
+}
+
+.range-label.out-of-range {
+    border-color: #e74c3c;
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+}
+
+/* Media Query for smaller screens (< 600px) */
+@media (max-width: 600px) {
+    /* Keep #header1 flex-wrap, don't force column on it */
+    .editor-header {
+        /* This is the key change to create the gap */
+        left: 1rem;
+        right: 1rem;
+        width: auto; /* Let it fill the space between left and right */
+        /* You can adjust '1rem' to whatever spacing you prefer, e.g., 0.5rem or 1.5rem */
+    }
+
+    /* Adjustments for header1 when content wraps */
+    #header1 {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        /* Ensure vertical padding is kept, horizontal is now handled by .editor-header */
+        padding: 1.5rem 0;
+    }
+
+    #header1 > * {
+        margin: 0.5rem; /* Add some spacing when elements wrap */
+        flex-basis: auto; /* Allow elements to determine their own width */
+    }
+
+    /* Adjust the header-speedDiv for smaller screens */
+    .header-speedDiv {
+        flex-basis: 100%; /* Make header-speedDiv take full width when parent wraps */
+        max-width: 300px; /* Limit its max width even if it takes full basis */
+        margin-bottom: 1rem; /* Add space below it */
+    }
+
+    /* Reduce font size for speed heading on small screens */
+    .header-speedDiv h3 {
+        font-size: 1.3rem;
+    }
+
+    /* Specific adjustments for the range-container on small screens */
+    .range-container {
+        /* No flex-direction: column here anymore */
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    /* The JavaScript applied class */
+    .range-container-small {
+        width: 50%; /* Half of its previous size */
+        max-width: 175px; /* Half of default max-width for consistency */
+        min-width: 150px; /* Prevent it from becoming too small */
+    }
+
+    /* The range input inside the range-container-small now flex-grows within that halved container */
+    .range-container-small input[type="range"] {
+        width: auto; /* Let flexbox control the width within range-container-small */
+        flex-grow: 1; /* Allow it to take up available space */
+    }
+
+
+    .range-label {
+        width: 4rem;
+        font-size: 1.4rem;
+    }
+
+    .wordCountDiv {
+        margin-top: 0.5rem;
+        flex-basis: auto;
+    }
+
+    .clock,
+    .words-stat {
+        font-size: calc(2rem * 0.75); /* Current font-size is 2rem, 25% of that is 0.5rem */
+        font-size: 1.2rem; /* Directly set to 0.5rem for 25% of 2rem */
+    }
+}
+
+/* Further adjustment for very small screens if necessary */
+@media (max-width: 400px) {
+    .promptBtn {
+        width: 6rem;
+        font-size: 1.2rem;
+    }
+
+    .header-left .header_title {
+        font-size: 1.8rem;
+    }
+
+    .header-left .header_title_Span {
+        font-size: 1.3rem;
+    }
+}
+
+
+
+
+/* style.css additions */
+
+/* Contact Form Specific Styles */
+.contact-container {
+    padding-top: calc(var(--header-height) + 0.5rem); /* Adjust padding to clear fixed header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px; /* Limit width of contact form */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left; /* Align form content to left */
+}
+
+.contact-form {
+    background-color: white;
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; /* Max width for the form itself */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form h2 {
+    font-size: 2.5rem;
+    color: #1a73e8;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.contact-form p {
+    font-size: 1.6rem;
+    color: #555;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.contact-form label {
+    font-size: 1.6rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.contact-form input[type="email"],
+.contact-form input[type="text"],
+.contact-form textarea {
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    border: 1px solid #c6c9ca;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    color: #333;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    resize: vertical; /* Allow textarea to be vertically resized */
+}
+
+.contact-form input[type="email"]:focus,
+.contact-form input[type="text"]:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 5px rgba(26, 115, 232, 0.5);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.contact-form button.promptBtn {
+    width: auto; /* Allow the button to size based on content */
+    padding: 1rem 2.5rem;
+    align-self: center; /* Center the button in the form */
+    margin-top: 1rem;
+}
+
+/* Media query for smaller screens for the contact form */
+@media (max-width: 600px) {
+    .contact-container {
+        padding-top: calc(var(--header-height) + 1rem); /* Slightly reduce top padding */
+        padding-bottom: 1rem; /* Add some bottom padding to ensure form doesn't hug bottom */
+    }
+
+    .contact-form {
+        padding: 1.5rem; /* Reduced from 2rem */
+        margin: 0 0.5rem; /* Reduce side margin slightly */
+        gap: 1rem; /* Reduced from 1.5rem */
+    }
+
+    .contact-form h2 {
+        font-size: 2rem;
+        margin-bottom: 0.8rem; /* Slightly reduced */
+    }
+
+    .contact-form p {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem; /* Reduced from 2rem */
+    }
+
+    .contact-form label {
+        font-size: 1.4rem;
+        margin-bottom: 0.3rem; /* Slightly reduced */
+    }
+
+    .contact-form input[type="email"],
+    .contact-form input[type="text"],
+    .contact-form textarea {
+        font-size: 1.4rem;
+        padding: 1rem 1.2rem; /* Reduced vertical padding */
+    }
+
+    .contact-form button.promptBtn {
+        font-size: 1.3rem;
+        padding: 0.8rem 2rem;
+        margin-top: 0.5rem; /* Slightly reduced */
+    }
+}
