@@ -667,8 +667,12 @@ input[type="range"]::-moz-range-thumb:hover {
     .wordCountDiv {
         font-size: 1rem;
     }    
+}
 
-    
+@media (max-width: 365px) {
+    .clock{
+        font-size: 1rem;
+    }
 }
 
 
