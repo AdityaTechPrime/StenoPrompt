@@ -67,7 +67,7 @@ h3 {
     max-width: 30px;
     width: 100%;
     cursor: pointer;
-    color: red;
+    
 }
 
 .header_title {
@@ -95,8 +95,19 @@ h3 {
     margin: 0;
 }
 
-.feedback {
+.my-email{
+    display: flex;
+    text-align: left;
+    justify-content: left;
+}
+
+.contact {
     color: #1a73e8;
+}
+
+.aditya {
+    font-size: 1.1rem;
+    color: #5f6368;
 }
 
 /* Main Container */
@@ -151,19 +162,14 @@ h3 {
     opacity: 0.5;
 }
 
-.wordCountDiv {
-    width: 11rem;
-}
-
 /* Editor Header */
 .editor-header {
     width: 100%;
     height: var(--editor-header-height);
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 0;
+    align-items: center;    
+    padding: 1rem 3rem;
     transition: all 0.6s ease;
     position: absolute;
     top: var(--header-height);
@@ -171,7 +177,28 @@ h3 {
     right: 0;
     z-index: 1;
     border-radius: 2rem;
-    box-shadow: 0 -20px 10px -20px rgba(0, 0, 0, 0.45) inset;
+    box-shadow: 0 -20px 10px -20px rgba(0, 0, 0, 0.45) inset;    
+}
+
+
+.header-speedDiv {
+    display: flex;
+    flex-direction: column; 
+    gap: 0.2rem;
+    flex-grow: 1;
+    flex-basis: auto;
+    min-width: 0;
+    align-items: center;
+}
+
+.header-speedDiv h3 {
+    text-align: center;
+}
+
+.wordCountDiv {
+    /*width: 9rem;*/
+    width: 9rem;
+    text-align: right;
 }
 
 .editor-header.hidden {
@@ -181,19 +208,6 @@ h3 {
     visibility: hidden;
     padding: 1rem 0;
     z-index: -1;
-}
-
-/* Header for input view */
-#header1 {
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-    height: auto; /* Adjust height dynamically when items wrap */
-    padding: 1rem; /* Adjust padding for wrapped content */
-    justify-content: center; /* Center items when wrapped */
-    align-items: center; /* Center items vertically */
-}
-
-#header1 > * {
-    margin: 0.5rem;
 }
 
 .clock {
@@ -209,20 +223,6 @@ h3 {
 
 .clockC {
     color: pink;
-}
-
-.header-speedDiv {
-    display: flex;
-    flex-direction: column; /* Keep its internal elements (h3, range-container) stacked */
-    gap: 1rem;
-    flex-grow: 1;
-    flex-basis: auto;
-    min-width: 0;
-    align-items: center;
-}
-
-.header-speedDiv h3 {
-    text-align: center;
 }
 
 .header2-btn-group {
@@ -295,26 +295,24 @@ h3 {
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    flex-wrap: nowrap; /* CRITICAL: Prevent wrapping within the container */
+    flex-wrap: nowrap; 
     font-family: 'Roboto', sans-serif;
-    width: 100%; /* Take full width of parent */
+    width: 100%; 
     max-width: 350px;
     justify-content: center;
 }
 
 /* New class for smaller range container (applied by JS) */
-.range-container-small {
-    /* REMOVED flex-direction: column; */
-    width: 50%; /* Halve its total size as requested */
-    /* You might need to adjust max-width or flex-basis if this doesn't shrink enough */
-    max-width: 175px; /* Half of default max-width: 350px */
-    min-width: 150px; /* Prevent it from becoming too small */
+.range-container-small {    
+    width: 50%;     
+    max-width: 175px;
+    min-width: 150px;
 }
 
 input[type="range"] {
-    width: 250px; /* Default width for the slider */
-    flex-grow: 1; /* Allow slider to grow/shrink */
-    min-width: 80px; /* Minimum width for slider */
+    width: 250px;
+    flex-grow: 1;
+    min-width: 80px;
     height: 10px;
     background: transparent;
     cursor: pointer;
@@ -322,13 +320,6 @@ input[type="range"] {
     appearance: none;
     border-radius: 5px;
 }
-
-/* Override for the small range container, target the range input within it */
-/* This rule is NO LONGER NEEDED as range-container-small itself controls the total width */
-/* .range-container-small input[type="range"] {
-    width: 125px;
-} */
-
 
 /* WebKit browsers */
 input[type="range"]::-webkit-slider-runnable-track {
@@ -418,38 +409,97 @@ input[type="range"]::-moz-range-thumb:hover {
     box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
 }
 
+
+/*************************Media Query*************************/
+
+
+@media (max-width: 700px) {
+
+
+    #header2{        
+        justify-content: space-evenly;
+        align-items: center;    
+        padding: 1rem 1rem;        
+    }
+
+    .header2-btn-group {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .clock{
+        font-size: 1.8rem;
+    }
+
+    .words-stat{
+        font-size: 1.5rem;
+    }
+
+
+    /*
+    <div class="editor-header hidden" id="header2">
+    <div class="stat-group">
+      <div class="clock">16:20:35 <span class="clockC"> / </span>
+        <span class="clock-total"> / 00:00:00</span></div>
+      <div class="words-stat">0000<span class="words-total"> / 0000</span></div>
+      </div>
+
+      <div class="header2-btn-group">
+      <button class="promptBtn iconBtn" id="backwardBtn" title="Backward">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11 18V6l-8.5 6L11 18zm1-6l8.5 6V6L12 12z" />
+        </svg>
+      </button>
+      <button class="promptBtn iconBtn" id="playPauseBtn" title="Play">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <path id="playPauseIcon" d="M8 5v14l11-7z" />
+        </svg>
+      </button>
+      <button class="promptBtn iconBtn" id="forwardBtn" title="Forward">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M13 6v12l8.5-6L13 6zm-1 6L3.5 6v12L12 12z" />
+        </svg>
+      </button>
+      </div>
+
+      <button class="promptBtn" id="closeBtn">Close</button>*/
+
+}
+
+
+
+
 /* Media Query for smaller screens (< 600px) */
-@media (max-width: 600px) {
-    /* Keep #header1 flex-wrap, don't force column on it */
-    .editor-header {
-        /* This is the key change to create the gap */
-        left: 1rem;
-        right: 1rem;
-        width: auto; /* Let it fill the space between left and right */
-        /* You can adjust '1rem' to whatever spacing you prefer, e.g., 0.5rem or 1.5rem */
+@media (max-width: 600px) {    
+    .editor-header {        
+        padding: 10px;
+        width: auto;        
+    }
+
+    .wordCountDiv {
+        width: auto;
     }
 
     /* Adjustments for header1 when content wraps */
-    #header1 {
+    /*#header1 {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        height: auto;
-        /* Ensure vertical padding is kept, horizontal is now handled by .editor-header */
+        height: auto;        
         padding: 1.5rem 0;
     }
 
     #header1 > * {
-        margin: 0.5rem; /* Add some spacing when elements wrap */
-        flex-basis: auto; /* Allow elements to determine their own width */
-    }
+        margin: 0.5rem;
+        flex-basis: auto;
+    }*/
 
     /* Adjust the header-speedDiv for smaller screens */
     .header-speedDiv {
-        flex-basis: 100%; /* Make header-speedDiv take full width when parent wraps */
-        max-width: 300px; /* Limit its max width even if it takes full basis */
-        margin-bottom: 1rem; /* Add space below it */
+        flex-basis: 100%;
+        max-width: 300px;
+        /*margin-bottom: 1rem;*/
     }
 
     /* Reduce font size for speed heading on small screens */
@@ -457,58 +507,180 @@ input[type="range"]::-moz-range-thumb:hover {
         font-size: 1.3rem;
     }
 
+    .header2-btn-group {    
+        gap: 0.5rem;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .header2-btn-group button {
+        width: 5rem;
+        height: 3.1rem;
+
+        /*width: 90%;
+        height: 50%;
+        font-size: 120%;*/
+    }
+
+
+
     /* Specific adjustments for the range-container on small screens */
     .range-container {
-        /* No flex-direction: column here anymore */
         justify-content: center;
         gap: 0.5rem;
     }
 
     /* The JavaScript applied class */
     .range-container-small {
-        width: 50%; /* Half of its previous size */
-        max-width: 175px; /* Half of default max-width for consistency */
-        min-width: 150px; /* Prevent it from becoming too small */
+        /*width: 50%; 
+        max-width: 175px;
+        min-width: 150px;*/
+        min-width: 100%;
+        /*padding: top right bottom left;*/        
+        padding: 0px 10px 10px 10px;        
     }
 
+    
     /* The range input inside the range-container-small now flex-grows within that halved container */
     .range-container-small input[type="range"] {
-        width: auto; /* Let flexbox control the width within range-container-small */
-        flex-grow: 1; /* Allow it to take up available space */
+        width: auto; 
+        flex-grow: 1;
     }
 
-
     .range-label {
-        width: 4rem;
-        font-size: 1.4rem;
+        width: 4.5rem;
+        height: auto;
+        font-size: 1.2rem;
     }
 
     .wordCountDiv {
-        margin-top: 0.5rem;
+        margin-top: 0.5rem;        
         flex-basis: auto;
+        font-size: 1.2rem;
     }
 
-    .clock,
-    .words-stat {
-        font-size: calc(2rem * 0.75); /* Current font-size is 2rem, 25% of that is 0.5rem */
-        font-size: 1.2rem; /* Directly set to 0.5rem for 25% of 2rem */
+    .stat-group{
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+
     }
+
+    .clock{
+        font-size: 1.8rem;
+    }
+
+    .words-stat{
+        font-size: 1.2rem;
+    }
+
+    
+    /*.clock,
+    .words-stat {
+        font-size: calc(2rem * 0.75);
+        font-size: 1.2rem;
+    }*/
 }
 
 /* Further adjustment for very small screens if necessary */
+@media (max-width: 500px) {
+  
+    .header {
+        padding: 1rem 1rem;
+        height: var(--header-height); /**/        
+        border-bottom: 1px solid #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: fixed;        
+        gap: 0.5rem;
+    }
+
+    .header-left {
+        gap: 2pt;
+    }
+
+    .header_logo-img {
+        max-width: 20px;
+        /*width: 100%;*/
+        cursor: pointer;        
+    }
+
+    .header_title {
+        font-size: 1.5rem;
+        color: #1a73e8;
+        cursor: pointer;
+    }
+
+    .header_title_Span {
+        font-size: 1rem;
+        color: #5f6368;
+    }   
+
+    .header-h3-msg {
+        font-size: 1rem;        
+    }    
+
+    .aditya {
+        font-size: 1rem;
+        color: #5f6368;
+    }
+
+    .clock{
+        font-size: 1.5rem;
+    }
+
+    .words-stat{
+        font-size: 1rem;
+    }
+
+}
+
+
+
+/* Further adjustment for very small screens if necessary */
 @media (max-width: 400px) {
+    body{
+        line-height: 1.1rem;
+    }
+    
+    .editor-header {        
+        padding: 10px;
+        width: auto;
+        border-radius: none;
+        box-shadow: none;        
+    }
+
+    #header2{
+        line-height: 1.5rem;
+    }
+
+
     .promptBtn {
         width: 6rem;
         font-size: 1.2rem;
     }
 
-    .header-left .header_title {
-        font-size: 1.8rem;
+    .header-speedDiv{
+        gap: 0.75rem;
+        height: auto;
+    }
+    .wordCountDiv {
+        font-size: 1rem;
+    }    
+
+    
+}
+
+
+/* Further adjustment for very small screens if necessary */
+@media (max-width: 300px) {
+    .editor-header {        
+        padding: 10px;
+        width: auto;
+        border-radius: 0;
+        box-shadow: none;
     }
 
-    .header-left .header_title_Span {
-        font-size: 1.3rem;
-    }
 }
 
 
@@ -522,10 +694,10 @@ input[type="range"]::-moz-range-thumb:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 800px; /* Limit width of contact form */
+    max-width: 800px; 
     margin-left: auto;
     margin-right: auto;
-    text-align: left; /* Align form content to left */
+    text-align: left; 
 }
 
 .contact-form {
@@ -534,7 +706,7 @@ input[type="range"]::-moz-range-thumb:hover {
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 500px; /* Max width for the form itself */
+    max-width: 500px; 
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -599,8 +771,8 @@ input[type="range"]::-moz-range-thumb:hover {
 /* Media query for smaller screens for the contact form */
 @media (max-width: 600px) {
     .contact-container {
-        padding-top: calc(var(--header-height) + 1rem); /* Slightly reduce top padding */
-        padding-bottom: 1rem; /* Add some bottom padding to ensure form doesn't hug bottom */
+        padding-top: calc(var(--header-height) + 1rem);
+        padding-bottom: 1rem; 
     }
 
     .contact-form {
